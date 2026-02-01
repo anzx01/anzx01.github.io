@@ -230,6 +230,7 @@ pre {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .column.one-third .card .thumbnail,
@@ -242,6 +243,7 @@ pre {
 .column.one-fourth .card-image {
     width: 100%;
     box-sizing: border-box;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 /* Sidebar Titles */
