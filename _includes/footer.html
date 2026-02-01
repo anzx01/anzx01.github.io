@@ -12,7 +12,8 @@
                     <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
             </div>
 
-            <ul class="site-footer-links mobile-hidden" style="text-align:center;float:none;display:block;">
+            <div class="mobile-hidden" style="text-align:center;clear:both;padding-top:10px;">
+              <ul class="site-footer-links" style="float:none;display:inline-block;margin:0;">
                 {% for nav in site.navs %}
                 <li style="display:inline-block;">
                     <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
@@ -22,7 +23,8 @@
                 <li style="display:inline-block;">
                     <a href="javascript:window.scrollTo(0,0)" >TOP</a>
                 </li>
-            </ul>
+              </ul>
+            </div>
 
         </div>
     </footer>
