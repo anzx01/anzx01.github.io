@@ -258,6 +258,26 @@ pre {
     border-color: var(--color-border-medium);
 }
 
+/* Sidebar Card Fix */
+.column.one-third .card,
+.column.one-fourth .card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.column.one-third .card .thumbnail,
+.column.one-fourth .card .thumbnail {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.column.one-third .card-image,
+.column.one-fourth .card-image {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Sidebar Titles */
 .column.one-fourth h3,
 .column.one-third h3,
