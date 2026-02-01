@@ -137,7 +137,7 @@ quiet: false
 excerpt_separator: "\n\n"
 permalink: /:year/:month/:day/:title/
 plugins:
-    - jekyll-github-metadata
+#     - jekyll-github-metadata
     - rouge
 #     - jekyll-html-pipeline
     - jekyll-paginate
