@@ -1,3 +1,17 @@
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 **我的父亲**
 
 六十年代初，父亲和母亲是在一列绿皮火车上认识的，当时父亲在天津铁路工程公司工作，母亲在北京铁路医院工作，在火车上可能因为同是山东老乡的原因就认识了，直到后来结婚。因为支援大西北，父亲工作调动到西安，经过几年的两地生活，在他们的努力下，母亲随后也调到了西安铁路中心医院。
