@@ -2,49 +2,9 @@
    Custom Enhancements - Technical Professional Theme
    ============================================ */
 
-/* Grid System Fix */
-.columns {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -10px;
-    margin-right: -10px;
-}
-
-.column {
-    padding-left: 10px;
-    padding-right: 10px;
+/* Ensure all elements use border-box */
+* {
     box-sizing: border-box;
-}
-
-.column.two-thirds {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-}
-
-.column.one-third {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-}
-
-.column.three-fourths {
-    flex: 0 0 75%;
-    max-width: 75%;
-}
-
-.column.one-fourth {
-    flex: 0 0 25%;
-    max-width: 25%;
-}
-
-/* Responsive Grid */
-@media (max-width: 768px) {
-    .column.two-thirds,
-    .column.one-third,
-    .column.three-fourths,
-    .column.one-fourth {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
 }
 
 /* Smooth Scrolling */
@@ -256,6 +216,12 @@ pre {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-border-medium);
+}
+
+/* Sidebar Spacing */
+.column.one-third,
+.column.one-fourth {
+    margin-top: var(--spacing-xl);
 }
 
 /* Sidebar Card Fix */
