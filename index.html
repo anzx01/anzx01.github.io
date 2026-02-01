@@ -159,7 +159,7 @@ comments: false
           {% if paginator.previous_page == 1 %}
               <a href="{{ site.url }}/" class="btn btn-outline">&laquo;</a>
           {% else %}
-              <a href="{{ site.url }}/page{{paginator.previous_page}}"  class="btn btn-outline">&laquo;</a>
+              <a href="{{ site.url }}/page{{paginator.previous_page}}/"  class="btn btn-outline">&laquo;</a>
           {% endif %}
         {% else %}
             <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
@@ -189,7 +189,7 @@ comments: false
           {% if count == paginator.page %}
             <a href="jaavascript:;" class="active btn btn-outline">{{count}}</a>
           {% else %}
-            <a href="{{ site.url }}/page{{count}}"  class="btn btn-outline">{{count}}</a>
+            <a href="{{ site.url }}/page{{count}}/"  class="btn btn-outline">{{count}}</a>
           {% endif %}
         {% endfor %}
 
@@ -202,12 +202,12 @@ comments: false
           {% if paginator.page == paginator.total_pages %}
               <a href="jaavascript:;" class="active btn btn-outline">{{paginator.total_pages}}</a>
           {% else %}
-              <a href="{{ site.url }}/page{{paginator.total_pages}}"  class="btn btn-outline">{{paginator.total_pages}}</a>
+              <a href="{{ site.url }}/page{{paginator.total_pages}}/"  class="btn btn-outline">{{paginator.total_pages}}</a>
           {% endif %}
         {% endif %}
 
         {% if paginator.next_page %}
-            <a href="{{ site.url }}/page{{paginator.next_page}}"  class="btn btn-outline">&raquo;</a>
+            <a href="{{ site.url }}/page{{paginator.next_page}}/"  class="btn btn-outline">&raquo;</a>
         {% else %}
             <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
         {% endif %}
