@@ -1,1 +1,209 @@
-.repo-list-name,.repo-list-name .prefix,.repo-list-name .slash{font-weight:400}.repo-list{position:relative;padding-left:0}.repo-list .participation-graph{position:absolute;right:0;bottom:0;left:0;z-index:-1}.repo-list .participation-graph.disabled{display:none}.repo-list .participation-graph .bars{position:absolute;bottom:0}.repo-list-item{position:relative;padding-top:30px;padding-bottom:30px;list-style:none;border-bottom:1px solid #eee}.repo-list-name{margin:0 0 8px;font-size:20px;line-height:1.2}.repo-list-name:hover{text-decoration:none;color:#4169E1}.repo-list-name .slash{margin-right:-4px;margin-left:-4px}.repo-list-description{max-width:550px;margin-top:8px;margin-bottom:0;font-size:14px;color:#666}.repo-list-stats{margin-top:6px;float:right;font-size:12px;font-weight:700;color:#888}.repo-list-stats .repo-list-stat-item{margin-left:8px;display:inline-block;color:#888;text-decoration:none}.repo-list-stats .repo-list-stat-item:hover{color:#4183c4}.repo-list-stats .repo-list-stat-item>.octicon{font-size:14px}.repo-list-info{display:inline-block;height:100%;margin-top:0;margin-bottom:0;font-size:12px;color:#888;vertical-align:middle}.repo-list-info .octicon{margin-top:-3px;font-size:12px;vertical-align:middle}.repo-list-meta{display:block;margin-top:8px;margin-bottom:0;font-size:13px;color:#999}.repo-list-meta .avatar{margin-top:-2px}.repo-list-meta a:hover{text-decoration:none}.repo-list-meta .meta-info{margin-right:15px}.repo-list-meta .meta-info a{color:#999}.repo-list-meta .meta-info a:hover,.repo-list-meta .meta-info a:hover{text-decoration: underline}
+/* ============================================
+   Repository/Post List Styles
+   ============================================ */
+
+.repo-list {
+    position: relative;
+    padding-left: 0;
+    margin: 0;
+}
+
+.repo-list .participation-graph {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.repo-list .participation-graph.disabled {
+    display: none;
+}
+
+.repo-list .participation-graph .bars {
+    position: absolute;
+    bottom: 0;
+}
+
+/* List Item - Card Style */
+.repo-list-item {
+    position: relative;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    list-style: none;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.repo-list-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-medium);
+}
+
+/* List Item Name/Title */
+.repo-list-name {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    line-height: var(--line-height-heading);
+    color: var(--color-text-primary);
+}
+
+.repo-list-name a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.repo-list-name a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.repo-list-name .prefix,
+.repo-list-name .slash {
+    font-weight: 400;
+}
+
+.repo-list-name .slash {
+    margin-right: -4px;
+    margin-left: -4px;
+}
+
+/* Description */
+.repo-list-description {
+    max-width: 100%;
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text-secondary);
+}
+
+/* Stats */
+.repo-list-stats {
+    margin-top: var(--spacing-sm);
+    float: right;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+}
+
+.repo-list-stats .repo-list-stat-item {
+    margin-left: var(--spacing-sm);
+    display: inline-block;
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.repo-list-stats .repo-list-stat-item:hover {
+    color: var(--color-primary);
+}
+
+.repo-list-stats .repo-list-stat-item > .octicon {
+    font-size: 14px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/* Info */
+.repo-list-info {
+    display: inline-block;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    vertical-align: middle;
+}
+
+.repo-list-info .octicon {
+    margin-top: -3px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+/* Meta Information */
+.repo-list-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.repo-list-meta .avatar {
+    margin-top: -2px;
+}
+
+.repo-list-meta a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.repo-list-meta a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.repo-list-meta .meta-info {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.repo-list-meta .meta-info .octicon {
+    color: var(--color-text-tertiary);
+}
+
+.repo-list-meta .meta-info a {
+    color: var(--color-text-muted);
+}
+
+.repo-list-meta .meta-info a:hover {
+    color: var(--color-primary);
+}
+
+/* Top Most Flag (Pinned Posts) */
+.top-most-flag {
+    display: inline-block;
+    padding: 2px var(--spacing-sm);
+    margin-right: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    background-color: rgba(8, 145, 178, 0.1);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .repo-list-item {
+        padding: var(--spacing-lg);
+    }
+
+    .repo-list-name {
+        font-size: var(--font-size-lg);
+    }
+
+    .repo-list-stats {
+        float: none;
+        margin-top: var(--spacing-md);
+    }
+
+    .repo-list-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+}

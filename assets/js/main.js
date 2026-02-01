@@ -31,4 +31,48 @@ jQuery(function() {
   }
 
   toTop();
+
+  // Sticky Header
+  function stickyHeader() {
+    var $header = $(".site-header");
+    var headerOffset = $header.offset().top;
+
+    $(window).on("scroll", function() {
+      if ($(window).scrollTop() > headerOffset) {
+        $header.addClass("sticky");
+      } else {
+        $header.removeClass("sticky");
+      }
+    });
+  }
+
+  stickyHeader();
+
+  // Reading Progress Bar (only on post pages)
+  if ($(".article-content").length > 0) {
+    // Create progress bar element
+    $("body").prepend('<div class="reading-progress"></div>');
+
+    var $progressBar = $(".reading-progress");
+    var $article = $(".article-content");
+
+    $(window).on("scroll", function() {
+      var articleTop = $article.offset().top;
+      var articleHeight = $article.outerHeight();
+      var windowHeight = $(window).height();
+      var scrollTop = $(window).scrollTop();
+
+      var articleStart = articleTop - windowHeight / 2;
+      var articleEnd = articleTop + articleHeight - windowHeight / 2;
+      var progress = 0;
+
+      if (scrollTop >= articleStart && scrollTop <= articleEnd) {
+        progress = ((scrollTop - articleStart) / (articleEnd - articleStart)) * 100;
+      } else if (scrollTop > articleEnd) {
+        progress = 100;
+      }
+
+      $progressBar.css("width", progress + "%");
+    });
+  }
 });
