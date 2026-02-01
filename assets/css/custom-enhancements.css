@@ -261,7 +261,8 @@ pre {
 /* Sidebar Titles */
 .column.one-fourth h3,
 .column.one-third h3,
-h3.popular-repo-title {
+h3.popular-repo-title,
+h3.popular-repo-title.mobile-hidden {
     font-size: var(--font-size-base) !important;
     font-weight: 600 !important;
     color: var(--color-text-primary) !important;
@@ -273,6 +274,7 @@ h3.popular-repo-title {
     white-space: normal !important;
     text-overflow: clip !important;
     max-width: 100% !important;
+    overflow: visible !important;
 }
 
 .column.one-fourth h3:first-child,
