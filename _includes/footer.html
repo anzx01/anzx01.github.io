@@ -12,18 +12,16 @@
                     <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
             </div>
 
-            <ul class="site-footer-links right mobile-hidden">
-                <li>
-                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-                </li>
-            </ul>
-            <ul class="site-footer-links mobile-hidden">
+            <ul class="site-footer-links mobile-hidden" style="text-align:center;float:none;display:block;">
                 {% for nav in site.navs %}
-                <li>
+                <li style="display:inline-block;">
                     <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
                 </li>
                 {% endfor %}
-                <li><a href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+                <li style="display:inline-block;"><a href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+                <li style="display:inline-block;">
+                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+                </li>
             </ul>
 
         </div>
