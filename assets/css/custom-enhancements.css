@@ -37,11 +37,12 @@
     letter-spacing: var(--letter-spacing-tight);
 }
 
+/* 默认导航项样式（非首页） */
 .site-header-nav-item {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-md);
 }
@@ -50,6 +51,17 @@
 .site-header-nav-item.current {
     color: var(--color-primary);
     background-color: var(--color-bg-elevated);
+}
+
+/* 首页导航项样式（在渐变背景上） */
+.home .site-header-nav-item {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.home .site-header-nav-item:hover,
+.home .site-header-nav-item.current {
+    color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 /* ========== Banner/Hero 区域优化 ========== */
