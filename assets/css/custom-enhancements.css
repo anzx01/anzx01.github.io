@@ -231,12 +231,18 @@ pre {
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    padding: 0;
 }
 
 .column.one-third .card .thumbnail,
 .column.one-fourth .card .thumbnail {
     width: 100%;
     box-sizing: border-box;
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
 }
 
 .column.one-third .card-image,
@@ -244,6 +250,12 @@ pre {
     width: 100%;
     box-sizing: border-box;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    margin: 0;
+}
+
+.column.one-third .card .caption,
+.column.one-fourth .card .caption {
+    padding: var(--spacing-md);
 }
 
 /* Sidebar Titles */
