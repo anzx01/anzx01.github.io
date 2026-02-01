@@ -420,5 +420,26 @@ input[type="text"]:focus {
     .column.one-fourth {
         margin-top: var(--spacing-lg);
     }
+
+    /* 移动端导航优化 */
+    .site-header {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .site-header h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .site-header-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        justify-content: center;
+    }
+
+    .site-header-nav-item {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
 }
 
