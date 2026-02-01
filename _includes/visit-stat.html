@@ -1,7 +1,7 @@
 <!-- 不蒜子访问统计 -->
 {% if site.components.busuanzi.enabled == true and page.visit-stat != 'hidden' and page.layout != 'mindmap' %}
 <script async src="{{ assets_base_url }}/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div style="margin-top:8px;font-size:0.9em;color:#666;">
+<span style="font-size:0.9em;color:#666;">
   <span id="busuanzi_container_site_pv">
     本站访问量 <span id="busuanzi_value_site_pv">-</span> 次
   </span>
@@ -14,5 +14,5 @@
     / 统计始于{{ site.components.busuanzi.start_date }}
     {% endif %}
   </span>
-</div>
+</span>
 {% endif %}
