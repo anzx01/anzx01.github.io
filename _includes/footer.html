@@ -6,6 +6,9 @@
             <div class="copyright left mobile-block">
                     © {{ site.since }}
                     <span title="{{ site.author}}">{{ site.author }}</span>
+                    <span class="mobile-hidden" style="margin-left:20px;">
+                      {% include visit-stat.html %}
+                    </span>
                     <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
             </div>
 
@@ -25,10 +28,6 @@
                 {% endfor %}
                 <li><a href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
             </ul>
-
-            <div style="display:inline-block;margin-left:20px;vertical-align:middle;">
-              {% include visit-stat.html %}
-            </div>
 
         </div>
     </footer>
