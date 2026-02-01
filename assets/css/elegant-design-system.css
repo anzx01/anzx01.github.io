@@ -1,0 +1,454 @@
+/* ============================================
+   Elegant & Refined Design System
+   优雅精致的设计系统
+   ============================================ */
+
+/* 设计理念：
+   - 优雅的衬线字体标题
+   - 精致的间距和排版
+   - 柔和高级的配色
+   - 细腻的阴影和过渡
+   - 充足的留白和呼吸感
+*/
+
+:root {
+    /* ========== 颜色系统 ========== */
+
+    /* 背景色 - 柔和的米白色调 */
+    --color-bg-page: #FAFAF9;           /* 页面主背景 */
+    --color-bg-card: #FFFFFF;            /* 卡片背景 */
+    --color-bg-elevated: #F5F5F4;        /* 悬浮元素背景 */
+    --color-bg-secondary: #F9FAFB;       /* 次要背景 */
+
+    /* 文字颜色 - 优雅的深色层次 */
+    --color-text-primary: #1A1A1E;       /* 主要文字 */
+    --color-text-secondary: #6B6B70;     /* 次要文字 */
+    --color-text-tertiary: #8E8E93;      /* 三级文字 */
+    --color-text-muted: #A0A0A5;         /* 弱化文字 */
+
+    /* 边框颜色 - 细腻的分隔 */
+    --color-border-subtle: #E5E5E5;      /* 细微边框 */
+    --color-border-medium: #D4D4D8;      /* 中等边框 */
+    --color-border-strong: #A1A1AA;      /* 强调边框 */
+
+    /* 主题色 - 优雅的蓝紫色 */
+    --color-primary: #6366F1;            /* 主色调 - 靛蓝 */
+    --color-primary-light: #818CF8;      /* 主色调浅色 */
+    --color-primary-dark: #4F46E5;       /* 主色调深色 */
+
+    /* 强调色 - 精致的辅助色 */
+    --color-accent-coral: #E85A4F;       /* 珊瑚红 */
+    --color-accent-emerald: #10B981;     /* 翡翠绿 */
+    --color-accent-amber: #F59E0B;       /* 琥珀黄 */
+
+    /* 语义色 */
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+    --color-info: #6366F1;
+
+    /* ========== 字体系统 ========== */
+
+    /* 字体族 - 优雅的衬线与现代无衬线组合 */
+    --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN',
+                    'Songti SC', 'SimSun', serif;  /* 标题用衬线字体 */
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+                 'Helvetica Neue', Arial, 'Noto Sans SC', 'PingFang SC',
+                 'Microsoft YaHei', sans-serif;     /* 正文用无衬线字体 */
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code',
+                 'Droid Sans Mono', 'Source Code Pro', monospace;
+
+    /* 字体大小 - 精致的尺寸层次 */
+    --font-size-xs: 0.75rem;      /* 12px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 1.875rem;    /* 30px */
+    --font-size-4xl: 2.25rem;     /* 36px */
+    --font-size-5xl: 3rem;        /* 48px */
+
+    /* 字重 */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* 行高 - 舒适的阅读体验 */
+    --line-height-tight: 1.25;
+    --line-height-snug: 1.375;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
+    --line-height-loose: 1.75;
+
+    /* 字间距 */
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+
+    /* ========== 间距系统 ========== */
+
+    --spacing-xs: 0.25rem;    /* 4px */
+    --spacing-sm: 0.5rem;     /* 8px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+    --spacing-3xl: 4rem;      /* 64px */
+    --spacing-4xl: 6rem;      /* 96px */
+
+    /* ========== 圆角系统 ========== */
+
+    --radius-sm: 0.375rem;    /* 6px */
+    --radius-md: 0.5rem;      /* 8px */
+    --radius-lg: 0.75rem;     /* 12px */
+    --radius-xl: 1rem;        /* 16px */
+    --radius-2xl: 1.5rem;     /* 24px */
+    --radius-full: 9999px;    /* 完全圆角 */
+
+    /* ========== 阴影系统 - 细腻的层次 ========== */
+
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08),
+                 0 1px 2px -1px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
+                 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08),
+                 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+
+    /* 彩色光晕阴影 - 优雅的强调 */
+    --shadow-primary: 0 8px 16px -4px rgba(99, 102, 241, 0.2);
+    --shadow-accent: 0 8px 16px -4px rgba(232, 90, 79, 0.2);
+
+    /* ========== 过渡动画 ========== */
+
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ========== Z-index 层级 ========== */
+
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1100;
+    --z-fixed: 1200;
+    --z-modal: 1300;
+    --z-popover: 1400;
+    --z-tooltip: 1500;
+}
+
+/* ========== 全局样式重置 ========== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-page);
+}
+
+/* ========== 优雅的标题样式 ========== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-tight);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+}
+
+h5 {
+    font-size: var(--font-size-lg);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+}
+
+/* ========== 优雅的链接样式 ========== */
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* 优雅的下划线效果 */
+.markdown-body a,
+.article-content a {
+    background-image: linear-gradient(
+        to right,
+        var(--color-primary) 0%,
+        var(--color-primary) 100%
+    );
+    background-size: 0 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--transition-base);
+}
+
+.markdown-body a:hover,
+.article-content a:hover {
+    background-size: 100% 1px;
+}
+
+/* ========== 精致的段落样式 ========== */
+
+p {
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ========== 优雅的列表样式 ========== */
+
+ul, ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-xl);
+}
+
+li {
+    margin-bottom: var(--spacing-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ========== 精致的代码样式 ========== */
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-coral);
+}
+
+pre {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-page);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* ========== 优雅的引用样式 ========== */
+
+blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+/* ========== 精致的表格样式 ========== */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: var(--spacing-xl) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+thead {
+    background-color: var(--color-bg-elevated);
+}
+
+th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-border-medium);
+}
+
+td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: var(--color-bg-secondary);
+}
+
+/* ========== 优雅的分隔线 ========== */
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-border-medium),
+        transparent
+    );
+    margin: var(--spacing-3xl) 0;
+}
+
+/* ========== 精致的图片样式 ========== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========== 优雅的按钮样式 ========== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-primary);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-bg-elevated);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* ========== 优雅的卡片样式 ========== */
+
+.card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--color-border-medium);
+}
+
+/* ========== 选择文本样式 ========== */
+
+::selection {
+    background-color: var(--color-primary-light);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--color-primary-light);
+    color: white;
+}
+
+/* ========== 焦点样式 - 可访问性 ========== */
+
+*:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ========== 滚动条样式 ========== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-elevated);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border-medium);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+}
