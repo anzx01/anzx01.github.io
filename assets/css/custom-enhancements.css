@@ -262,19 +262,22 @@ pre {
 .column.one-fourth h3,
 .column.one-third h3,
 h3.popular-repo-title {
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: var(--line-height-heading);
+    font-size: var(--font-size-base) !important;
+    font-weight: 600 !important;
+    color: var(--color-text-primary) !important;
+    margin-bottom: var(--spacing-md) !important;
+    margin-top: var(--spacing-lg) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    line-height: var(--line-height-heading) !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    max-width: 100% !important;
 }
 
 .column.one-fourth h3:first-child,
 .column.one-third h3:first-child {
-    margin-top: 0;
+    margin-top: 0 !important;
 }
 
 /* Meta Info */
