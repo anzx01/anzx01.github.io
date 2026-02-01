@@ -252,7 +252,7 @@ h3.popular-repo-title.mobile-hidden {
     font-size: var(--font-size-base) !important;
     font-weight: 600 !important;
     color: var(--color-text-primary) !important;
-    margin-bottom: var(--spacing-md) !important;
+    margin-bottom: var(--spacing-xl) !important;
     margin-top: var(--spacing-lg) !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
