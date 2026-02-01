@@ -213,6 +213,25 @@ pre {
     border-color: var(--color-border-medium);
 }
 
+/* Sidebar Titles */
+.column.one-fourth h3,
+.column.one-third h3,
+h3.popular-repo-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: var(--line-height-heading);
+}
+
+.column.one-fourth h3:first-child,
+.column.one-third h3:first-child {
+    margin-top: 0;
+}
+
 /* Meta Info */
 .meta-info {
     color: var(--color-text-muted);
