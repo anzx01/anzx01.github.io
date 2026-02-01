@@ -20,7 +20,6 @@ permalink: /about/
 微信：<br />
 <img style="height:192px;width:192px;border:1px solid lightgrey;" src="{{ site.url }}/assets/images/qrcode.jpg" alt="终南山下幻世浮生" />
 </li>
-{% endif %}
 </ul>
 
 
