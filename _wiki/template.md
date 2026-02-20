@@ -1,18 +1,11 @@
 ---
 layout: wiki
 title: 各种界面组件
-cate1:
-cate2:
-description:各种界面组件
-keywords: 界面, UI
-type:
-link:
-mermaid: false
-sequence: false
-flow: false
-mathjax: false
-mindmap: false
-mindmap2: false
+cate1: Tools
+cate2: 
+description: 用正确的工具做对的事情
+keywords: 软件, 推荐
+---
 ---
 各种界面组件
 Shadcn/ui、Magic UI 、Animate UI
