@@ -9,4 +9,4 @@ keywords: 软件, 推荐
 ---
 各种界面组件
 Shadcn/ui、Magic UI 、Animate UI
-https://21st.dev/community/componentsContent here
+21st.dev
