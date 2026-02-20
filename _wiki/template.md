@@ -1,10 +1,10 @@
 ---
 layout: wiki
-title: Wiki Template
+title: 各种界面组件
 cate1:
 cate2:
-description: some word here
-keywords: keyword1, keyword2
+description:各种界面组件
+keywords: 界面, UI
 type:
 link:
 mermaid: false
@@ -14,5 +14,6 @@ mathjax: false
 mindmap: false
 mindmap2: false
 ---
-
-Content here
+各种界面组件
+Shadcn/ui、Magic UI 、Animate UI
+https://21st.dev/community/componentsContent here
