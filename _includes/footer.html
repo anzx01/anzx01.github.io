@@ -39,7 +39,20 @@
     <script>
       jQuery(document).ready(function($) {
         $('.geopattern').each(function(){
-          $(this).geopattern($(this).data('pattern-id'));
+          var $el = $(this);
+          var thumb = $el.data('thumb');
+          if (thumb) {
+            var img = new Image();
+            img.onload = function() {
+              $el.css('background-image', 'url(' + thumb + ')');
+            };
+            img.onerror = function() {
+              $el.geopattern($el.data('pattern-id'));
+            };
+            img.src = thumb;
+          } else {
+            $el.geopattern($el.data('pattern-id'));
+          }
         });
        /* hljs.initHighlightingOnLoad(); */
       });

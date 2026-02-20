@@ -20,7 +20,8 @@ permalink: /open-source/
         {% for repo in sorted_repos %}
         <a href="{{ repo.html_url }}" target="_blank" class="one-third-column card text-center">
             <div class="thumbnail">
-                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}">
+                {% assign thumb = site.baseurl | append: '/assets/img/projects/' | append: repo.name | append: '.png' %}
+                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}" data-thumb="{{ thumb }}" style="background-size:cover;background-position:center;">
                     <div class="card-image-cell">
                         <h3 class="card-title">
                             {{ repo.name }}
