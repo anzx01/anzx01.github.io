@@ -5,7 +5,20 @@
       "Bash(git add:*)",
       "Bash(git rm:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git -C \"g:/myaist/anzx01.github.io\" status)",
+      "Bash(bundle exec jekyll build:*)",
+      "Bash(powershell.exe -Command \"cd ''g:\\\\myaist\\\\anzx01.github.io''; bundle exec jekyll build 2>&1\")",
+      "Bash(powershell.exe -Command \"where.exe ruby; where.exe jekyll; where.exe bundle\")",
+      "Bash(powershell.exe -Command \"Get-Command ruby,jekyll,bundle -ErrorAction SilentlyContinue | Select-Object Name,Source\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Ruby*'' -ErrorAction SilentlyContinue | Select-Object FullName; Get-ChildItem ''C:\\\\Program Files\\\\Ruby*'' -ErrorAction SilentlyContinue | Select-Object FullName\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\'' -Directory | Select-Object Name\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Program Files\\\\Ruby*'',''C:\\\\Program Files \\(x86\\)\\\\Ruby*'' -ErrorAction SilentlyContinue | Select-Object FullName\")",
+      "Bash(powershell.exe -Command \"echo $env:PATH\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\ProgramData\\\\chocolatey\\\\bin'' | Where-Object { $_.Name -match ''ruby|jekyll|bundle|gem'' }\")",
+      "Read(//c/ProgramData/chocolatey/bin//**)",
+      "Read(//c/Users/**)"
     ]
   }
 }

@@ -125,6 +125,7 @@ index:
 #      Jekyll      #
 # ---------------- #
 markdown: kramdown
+future: true
 kramdown:
     input: GFM
 highlighter: rouge
