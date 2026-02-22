@@ -7,11 +7,9 @@ comments: true
 menu: 关于
 permalink: /about/
 ---
-
 我是anzx01。
 
-学习逻辑和常识。
-
+有关自我进化。
 
 ## 联系
 
@@ -21,6 +19,3 @@ permalink: /about/
 <img style="height:192px;width:192px;border:1px solid lightgrey;" src="{{ site.url }}/assets/images/qrcode.jpg" alt="终南山下幻世浮生" />
 </li>
 </ul>
-
-
-
