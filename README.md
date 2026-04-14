@@ -2,7 +2,7 @@
 
 我的个人博客：<https://anzx01.github.io >。
 
-AI编程学习记录
+AI学习记录
 
 ## 概览
 
