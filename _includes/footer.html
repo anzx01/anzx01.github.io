@@ -38,20 +38,251 @@
     <script src="{{ assets_base_url }}/assets/js/geopattern.js"></script>
     <script>
       jQuery(document).ready(function($) {
+        var readmeImageCacheMaxAge = 7 * 24 * 60 * 60 * 1000;
+
+        function setCardImage($el, imageUrl) {
+          var safeUrl = String(imageUrl).replace(/["\\]/g, '\\$&');
+          $el.css('background-image', 'url("' + safeUrl + '")');
+        }
+
+        function useGeoPattern($el) {
+          $el.geopattern($el.data('pattern-id'));
+        }
+
+        function loadImage(imageUrl, onLoad, onError) {
+          var img = new Image();
+          img.onload = function() {
+            onLoad(imageUrl);
+          };
+          img.onerror = onError;
+          img.src = imageUrl;
+        }
+
+        function readCache(key) {
+          try {
+            var item = window.localStorage.getItem(key);
+            var cached;
+
+            if (!item) {
+              return null;
+            }
+
+            try {
+              cached = JSON.parse(item);
+            } catch (e) {
+              return item;
+            }
+
+            if (!cached || !cached.value || !cached.createdAt) {
+              return null;
+            }
+
+            if (Date.now() - cached.createdAt > readmeImageCacheMaxAge) {
+              window.localStorage.removeItem(key);
+              return null;
+            }
+
+            return cached.value;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function writeCache(key, value) {
+          try {
+            window.localStorage.setItem(key, JSON.stringify({
+              value: value,
+              createdAt: Date.now()
+            }));
+          } catch (e) {}
+        }
+
+        function removeCache(key) {
+          try {
+            window.localStorage.removeItem(key);
+          } catch (e) {}
+        }
+
+        function decodeBase64(value) {
+          var binary = window.atob(String(value).replace(/\s/g, ''));
+          if (window.TextDecoder) {
+            var bytes = new Uint8Array(binary.length);
+            for (var i = 0; i < binary.length; i++) {
+              bytes[i] = binary.charCodeAt(i);
+            }
+            return new TextDecoder('utf-8').decode(bytes);
+          }
+          return decodeURIComponent(escape(binary));
+        }
+
+        function decodeHtmlEntities(value) {
+          return String(value)
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
+        }
+
+        function collectReadmeImages(markdown) {
+          var images = [];
+          var match;
+          var htmlImagePattern = /<img[^>]+src=["']([^"']+)["'][^>]*>/gi;
+          var markdownImagePattern = /!\[[^\]]*]\(\s*<?([^)\s>]+)>?[^)]*\)/g;
+
+          while ((match = htmlImagePattern.exec(markdown)) !== null) {
+            images.push({ src: match[1], context: match[0], index: match.index });
+          }
+
+          while ((match = markdownImagePattern.exec(markdown)) !== null) {
+            images.push({ src: match[1], context: match[0], index: match.index });
+          }
+
+          return images.sort(function(a, b) {
+            return a.index - b.index;
+          });
+        }
+
+        function isBadgeImage(image) {
+          var text = (image.src + ' ' + image.context).toLowerCase();
+          return /shields\.io|badgen\.net|badge|build|status|license|version|downloads?|npm|pypi|coverage|codecov|coveralls|travis|circleci|workflow|stars?|forks?/.test(text);
+        }
+
+        function normalizeGithubImageUrl(imageUrl) {
+          var url = imageUrl;
+          var blobMatch = url.match(/^https:\/\/github\.com\/([^\/]+\/[^\/]+)\/blob\/([^\/]+)\/(.+)$/i);
+          var rawMatch = url.match(/^https:\/\/github\.com\/([^\/]+\/[^\/]+)\/raw\/([^\/]+)\/(.+)$/i);
+
+          if (blobMatch) {
+            return 'https://raw.githubusercontent.com/' + blobMatch[1] + '/' + blobMatch[2] + '/' + blobMatch[3].replace(/\?.*$/, '');
+          }
+
+          if (rawMatch) {
+            return 'https://raw.githubusercontent.com/' + rawMatch[1] + '/' + rawMatch[2] + '/' + rawMatch[3].replace(/\?.*$/, '');
+          }
+
+          return url;
+        }
+
+        function resolveReadmeImageUrl(src, readme, rawRoot) {
+          var imageSrc = decodeHtmlEntities(src).trim().replace(/^['"<]+|['">]+$/g, '');
+          var readmeUrl = readme.download_url || '';
+
+          if (!imageSrc || imageSrc.charAt(0) === '#' || imageSrc.indexOf('data:') === 0) {
+            return '';
+          }
+
+          if (imageSrc.indexOf('//') === 0) {
+            return window.location.protocol + imageSrc;
+          }
+
+          if (/^https?:\/\//i.test(imageSrc)) {
+            return normalizeGithubImageUrl(imageSrc);
+          }
+
+          if (imageSrc.charAt(0) === '/' && rawRoot) {
+            return rawRoot + imageSrc.replace(/^\/+/, '');
+          }
+
+          if (!readmeUrl) {
+            return '';
+          }
+
+          try {
+            return normalizeGithubImageUrl(new URL(imageSrc, readmeUrl).href);
+          } catch (e) {
+            return '';
+          }
+        }
+
+        function findReadmeThumbnail(readme, rawRoot) {
+          var markdown = '';
+          var images;
+          var image;
+          var i;
+
+          if (!readme || !readme.content) {
+            return '';
+          }
+
+          try {
+            markdown = decodeBase64(readme.content);
+          } catch (e) {
+            return '';
+          }
+
+          images = collectReadmeImages(markdown);
+          for (i = 0; i < images.length; i++) {
+            if (!isBadgeImage(images[i])) {
+              image = resolveReadmeImageUrl(images[i].src, readme, rawRoot);
+              if (image) {
+                return image;
+              }
+            }
+          }
+
+          return '';
+        }
+
+        function useReadmeImage($el) {
+          var readmeApi = $el.data('readme-api');
+          var rawRoot = $el.data('raw-root');
+          var cacheKey = readmeApi ? 'readme-card-image:' + readmeApi : '';
+          var cachedImage = cacheKey ? readCache(cacheKey) : null;
+
+          if (!readmeApi) {
+            useGeoPattern($el);
+            return;
+          }
+
+          if (cachedImage === '-') {
+            useGeoPattern($el);
+            return;
+          }
+
+          if (cachedImage) {
+            loadImage(cachedImage, function(imageUrl) {
+              setCardImage($el, imageUrl);
+            }, function() {
+              removeCache(cacheKey);
+              useGeoPattern($el);
+            });
+            return;
+          }
+
+          $.getJSON(readmeApi)
+            .done(function(readme) {
+              var readmeImage = findReadmeThumbnail(readme, rawRoot);
+
+              if (!readmeImage) {
+                writeCache(cacheKey, '-');
+                useGeoPattern($el);
+                return;
+              }
+
+              loadImage(readmeImage, function(imageUrl) {
+                writeCache(cacheKey, imageUrl);
+                setCardImage($el, imageUrl);
+              }, function() {
+                useGeoPattern($el);
+              });
+            })
+            .fail(function() {
+              useGeoPattern($el);
+            });
+        }
+
         $('.geopattern').each(function(){
           var $el = $(this);
           var thumb = $el.data('thumb');
           if (thumb) {
-            var img = new Image();
-            img.onload = function() {
-              $el.css('background-image', 'url(' + thumb + ')');
-            };
-            img.onerror = function() {
-              $el.geopattern($el.data('pattern-id'));
-            };
-            img.src = thumb;
+            loadImage(thumb, function(imageUrl) {
+              setCardImage($el, imageUrl);
+            }, function() {
+              useReadmeImage($el);
+            });
           } else {
-            $el.geopattern($el.data('pattern-id'));
+            useReadmeImage($el);
           }
         });
        /* hljs.initHighlightingOnLoad(); */

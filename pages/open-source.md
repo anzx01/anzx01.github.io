@@ -18,10 +18,15 @@ permalink: /open-source/
         <!-- Check here for github metadata -->
         <!-- https://help.github.com/articles/repository-metadata-on-github-pages/ -->
         {% for repo in sorted_repos %}
+        {% assign repo_full_name = repo.full_name %}
+        {% if repo_full_name == nil or repo_full_name == '' %}
+        {% assign repo_full_name = repo.html_url | remove: 'https://github.com/' %}
+        {% endif %}
+        {% assign repo_default_branch = repo.default_branch | default: 'master' %}
         <a href="{{ repo.html_url }}" target="_blank" class="one-third-column card text-center">
             <div class="thumbnail">
                 {% assign thumb = site.baseurl | append: '/assets/img/projects/' | append: repo.name | append: '.png' %}
-                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}" data-thumb="{{ thumb }}" style="background-size:cover;background-position:center;">
+                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}" data-thumb="{{ thumb }}" data-readme-api="https://api.github.com/repos/{{ repo_full_name }}/readme" data-raw-root="https://raw.githubusercontent.com/{{ repo_full_name }}/{{ repo_default_branch }}/" style="background-size:cover;background-position:center;">
                     <div class="card-image-cell">
                         <h3 class="card-title">
                             {{ repo.name }}
