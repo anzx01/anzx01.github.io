@@ -1,14 +1,14 @@
 <!-- 访问统计 -->
 {% if site.components.busuanzi.enabled == true and page.visit-stat != 'hidden' and page.layout != 'mindmap' %}
-<span style="font-size:0.9em;color:#666;">
-  <span id="busuanzi_container_site_pv" style="display:none">
-    本站访问量 <span id="busuanzi_value_site_pv"></span> 次
+<span class="visit-stat">
+  <span id="busuanzi_container_site_pv" class="visit-stat-item">
+    本站访问量 <span id="busuanzi_value_site_pv">--</span> 次
   </span>
-  <span id="busuanzi_container_site_uv" style="display:none">
-    / 本站访客数 <span id="busuanzi_value_site_uv"></span> 人
+  <span id="busuanzi_container_site_uv" class="visit-stat-item">
+    / 本站访客数 <span id="busuanzi_value_site_uv">--</span> 人
   </span>
-  <span id="busuanzi_container_page_pv" style="display:none">
-    / 本页访问量 <span id="busuanzi_value_page_pv"></span> 次
+  <span id="busuanzi_container_page_pv" class="visit-stat-item">
+    / 本页访问量 <span id="busuanzi_value_page_pv">--</span> 次
   </span>
   {% if site.components.busuanzi.start_date %}
   <span>统计始于{{ site.components.busuanzi.start_date }}</span>

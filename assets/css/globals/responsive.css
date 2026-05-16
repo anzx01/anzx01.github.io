@@ -35,6 +35,11 @@
   .mobile-visible {
     display: inline-block
   }
+  .visit-stat-wrapper {
+    display: block;
+    margin: 6px 0 0;
+    line-height: 1.8
+  }
   .mobile-md-section {
     padding: 10px 0
   }
