@@ -39,7 +39,7 @@ components:
     # 页面右上角，以及「关于」页面的二维码
     # 修改图片请替换 assets/images/qrcode.jpg
     qrcode:
-        enabled: true
+        enabled: false
         image_alt: 终南山下幻世浮生
     # 维基索引页使用哪种视图，支持 列表（list）/分类（cate）
     wiki:
@@ -62,7 +62,7 @@ organization:
 organization_url: 
 github_username: anzx01
 location: Xi'an, China
-email: txsys@hotmail.com
+email:
 
 # ---------------- #
 #    Navigation    #
@@ -181,9 +181,15 @@ simple_jekyll_search:
 google:
     analytics_id: # G-20FLEG5Q2W
     adsense:
-        enabled: true
+        enabled: false
+        client:
         footer: true
+        footer_slot:
         sidebar: true
+        sidebar_slot:
         sidebar-detail: true
+        sidebar_detail_slot:
         content_header: false
+        content_header_slot:
         content_footer: false
+        content_footer_slot:

@@ -2,9 +2,19 @@
 
 我的个人博客：<https://anzx01.github.io >。
 
-学习和记录
+学习和记录。
 
-## 概览
+## 许可证
+
+本仓库中的站点源码、配置和自定义脚本按 [MIT License](LICENSE) 授权。
+
+博客文章、个人页面内容、原创图片、二维码和其它个人素材不包含在 MIT 授权范围内；除非页面另有说明，这些内容按 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans) 授权。
+
+`assets/vendor/`、部分 `assets/js/` 文件和外部 CDN 资源来自第三方项目，按各自许可证授权。详情见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+## 隐私说明
+
+站点可能加载 GitHub Pages、giscus 评论、Busuanzi 访问统计、GitHub API、Google Analytics、Google AdSense 或 CDN 脚本。详情见 [PRIVACY.md](PRIVACY.md)。
 
 ## 使用文档
 
@@ -49,8 +59,10 @@ jobs:
 
 ## 联系我
 
-通过947057797@qq.com或者微信与我联系。
+可通过 GitHub 个人主页或仓库 Issue 联系我。
 
 ## 致谢
 
 本博客外观基于 [DONGChuan](https://dongchuan.github.io) 修改，感谢！
+
+另见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 中保留的第三方组件和上游主题说明。

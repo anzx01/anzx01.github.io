@@ -1,9 +1,9 @@
-{% if site.google.adsense.enabled and site.google.adsense.sidebar-detail and site.url contains 'mazhuang.org' %}
-<!-- 博客右侧，搜索下方 -->
+{% if site.google.adsense.enabled and site.google.adsense.client and site.google.adsense.sidebar-detail and site.google.adsense.sidebar_detail_slot %}
+<!-- Sidebar detail ad -->
 <ins class="adsbygoogle"
      style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-7093222719567591"
-     data-ad-slot="2908164598"></ins>
+     data-ad-client="{{ site.google.adsense.client }}"
+     data-ad-slot="{{ site.google.adsense.sidebar_detail_slot }}"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>

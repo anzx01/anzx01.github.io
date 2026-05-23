@@ -6,6 +6,8 @@ _site/
 .DS_Store
 Gemfile.lock
 .vscode/
+.claude/
 .jekyll-metadata
+assets/images/qrcode.jpg
 .\$*.png.bkp
 .\$*.png.dtmp
