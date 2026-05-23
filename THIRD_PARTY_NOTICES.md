@@ -14,13 +14,14 @@ The root `LICENSE` applies only to this site's original source code and configur
 | Snap.svg 0.4.1 | `assets/js/snap.svg-min.js` | Apache-2.0. Copyright Adobe Systems Incorporated. |
 | Raphael 2.2.0 | `assets/js/raphael.min.js` | MIT. See upstream Raphael project for full license text. |
 | flowchart.js 1.7.0 | `assets/vendor/flowchart.js/dist/` | MIT. Copyright Adriano Raiano. |
-| js-sequence-diagrams | `assets/vendor/js-sequence-diagrams/dist/` | Simplified BSD for the diagram library. The bundled Daniel font includes its own copyright and CC BY-ND 3.0 notice in the source distribution. |
+| js-sequence-diagrams | `assets/vendor/js-sequence-diagrams/dist/` | Simplified BSD for the diagram library. The bundled Daniel font is copyright (c) 2011 Daniel Midgley, all rights reserved, and is licensed under CC BY-ND 3.0 (https://creativecommons.org/licenses/by-nd/3.0/). The font copyright notice must be retained and the font may not be modified. |
 | Primer CSS | `assets/vendor/primer-css/css/primer.css` | MIT portions including normalize.css. See upstream Primer CSS for full license text. |
 | Octicons | `assets/vendor/octicons/` | Icons and code are MIT; bundled icon fonts include the SIL OFL 1.1 notice retained in `assets/vendor/octicons/octicons/octicons.svg`. |
 | share.js and jquery.qrcode | `assets/vendor/share.js/dist/` | See upstream share.js/jquery.qrcode projects for their licenses. |
-| Busuanzi | `assets/vendor/busuanzi/2.3/` | Third-party visitor counter script; see upstream Busuanzi project for license and service behavior. |
-| GeoPattern | `assets/js/geopattern.js` | See upstream GeoPattern project for license. |
-| jekyll-table-of-contents | `assets/js/jquery.toc.js` | See upstream jekyll-table-of-contents project for license. |
+| Busuanzi | `assets/vendor/busuanzi/2.3/` | Third-party visitor counter script sourced from https://busuanzi.ibruce.info. The upstream project does not publish an explicit open-source license; the script is included here as a locally-hosted copy for performance. Use at your own discretion. |
+| GeoPattern | `assets/js/geopattern.js` | MIT. Copyright (c) 2014 Brandon Mills. |
+| jekyll-table-of-contents | `assets/js/jquery.toc.js` | MIT. Original work by ghiculescu (https://github.com/ghiculescu/jekyll-table-of-contents); modified by mazhuang.org. |
+| Gitalk | `assets/vendor/gitalk/` | MIT. Copyright (c) gitalk contributors (https://github.com/gitalk/gitalk). |
 
 ## Hosted Runtime Dependencies
 
