@@ -165,9 +165,9 @@
           return url;
         }
 
-        function resolveReadmeImageUrl(src, readme, rawRoot) {
+        function resolveReadmeImageUrl(src, readmeUrl, rawRoot) {
           var imageSrc = decodeHtmlEntities(src).trim().replace(/^['"<]+|['">]+$/g, '');
-          var readmeUrl = readme.download_url || '';
+          readmeUrl = readmeUrl || '';
 
           if (!imageSrc || imageSrc.charAt(0) === '#' || imageSrc.indexOf('data:') === 0) {
             return '';
@@ -196,11 +196,30 @@
           }
         }
 
-        function findReadmeThumbnail(readme, rawRoot) {
-          var markdown = '';
+        function findMarkdownThumbnail(markdown, readmeUrl, rawRoot) {
           var images;
           var image;
           var i;
+
+          if (!markdown) {
+            return '';
+          }
+
+          images = collectReadmeImages(markdown);
+          for (i = 0; i < images.length; i++) {
+            if (!isBadgeImage(images[i])) {
+              image = resolveReadmeImageUrl(images[i].src, readmeUrl, rawRoot);
+              if (image) {
+                return image;
+              }
+            }
+          }
+
+          return '';
+        }
+
+        function findReadmeThumbnail(readme, rawRoot) {
+          var markdown = '';
 
           if (!readme || !readme.content) {
             return '';
@@ -212,27 +231,44 @@
             return '';
           }
 
-          images = collectReadmeImages(markdown);
-          for (i = 0; i < images.length; i++) {
-            if (!isBadgeImage(images[i])) {
-              image = resolveReadmeImageUrl(images[i].src, readme, rawRoot);
-              if (image) {
-                return image;
-              }
+          return findMarkdownThumbnail(markdown, readme.download_url || '', rawRoot);
+        }
+
+        function getReadmeUrlCandidates(readmeUrl) {
+          var cleanUrl = String(readmeUrl || '').split('#')[0].split('?')[0];
+          var baseUrl = cleanUrl.replace(/\/[^\/]*$/, '/');
+          var names = ['README.md', 'Readme.md', 'readme.md', 'README.MD', 'README.markdown', 'readme.markdown'];
+          var urls = [];
+          var seen = {};
+          var i;
+
+          function add(url) {
+            if (url && !seen[url]) {
+              seen[url] = true;
+              urls.push(url);
             }
           }
 
-          return '';
+          add(readmeUrl);
+          if (baseUrl && baseUrl !== cleanUrl) {
+            for (i = 0; i < names.length; i++) {
+              add(baseUrl + names[i]);
+            }
+          }
+
+          return urls;
         }
 
         function useReadmeImage($el) {
           var readmeApi = $el.data('readme-api');
+          var readmeUrl = $el.data('readme-url');
           var rawRoot = $el.data('raw-root');
           var repoUpdatedAt = $el.data('repo-updated-at') || '';
-          var cacheKey = readmeApi ? 'readme-card-image:' + readmeApi + ':' + repoUpdatedAt : '';
+          var cacheSource = readmeUrl || readmeApi;
+          var cacheKey = cacheSource ? 'readme-card-image:' + cacheSource + ':' + repoUpdatedAt : '';
           var cachedImage = cacheKey ? readCache(cacheKey) : null;
 
-          if (!readmeApi) {
+          if (!readmeUrl && !readmeApi) {
             useGeoPattern($el);
             return;
           }
@@ -252,26 +288,60 @@
             return;
           }
 
-          $.getJSON(readmeApi)
-            .done(function(readme) {
-              var readmeImage = findReadmeThumbnail(readme, rawRoot);
+          function applyReadmeImage(readmeImage) {
+            if (!readmeImage) {
+              writeCache(cacheKey, '-');
+              useGeoPattern($el);
+              return;
+            }
 
-              if (!readmeImage) {
-                writeCache(cacheKey, '-');
-                useGeoPattern($el);
-                return;
-              }
-
-              loadImage(readmeImage, function(imageUrl) {
-                writeCache(cacheKey, imageUrl);
-                setCardImage($el, imageUrl);
-              }, function() {
-                useGeoPattern($el);
-              });
-            })
-            .fail(function() {
+            loadImage(readmeImage, function(imageUrl) {
+              writeCache(cacheKey, imageUrl);
+              setCardImage($el, imageUrl);
+            }, function() {
               useGeoPattern($el);
             });
+          }
+
+          function useReadmeApiFallback() {
+            if (!readmeApi) {
+              useGeoPattern($el);
+              return;
+            }
+
+            $.getJSON(readmeApi)
+              .done(function(readme) {
+                applyReadmeImage(findReadmeThumbnail(readme, rawRoot));
+              })
+              .fail(function() {
+                useGeoPattern($el);
+              });
+          }
+
+          function loadRawReadme(urls, index) {
+            if (index >= urls.length) {
+              useReadmeApiFallback();
+              return;
+            }
+
+            $.ajax({
+              url: urls[index],
+              dataType: 'text',
+              cache: true
+            })
+              .done(function(markdown) {
+                applyReadmeImage(findMarkdownThumbnail(markdown, urls[index], rawRoot));
+              })
+              .fail(function() {
+                loadRawReadme(urls, index + 1);
+              });
+          }
+
+          if (readmeUrl) {
+            loadRawReadme(getReadmeUrlCandidates(readmeUrl), 0);
+          } else {
+            useReadmeApiFallback();
+          }
         }
 
         $('.geopattern').each(function(){
