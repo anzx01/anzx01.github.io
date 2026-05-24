@@ -26,7 +26,7 @@ permalink: /open-source/
         <a href="{{ repo.html_url }}" target="_blank" class="one-third-column card text-center">
             <div class="thumbnail">
                 {% assign thumb = site.baseurl | append: '/assets/img/projects/' | append: repo.name | append: '.png' %}
-                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}" data-thumb="{{ thumb }}" data-readme-api="https://api.github.com/repos/{{ repo_full_name }}/readme" data-raw-root="https://raw.githubusercontent.com/{{ repo_full_name }}/{{ repo_default_branch }}/" style="background-size:cover;background-position:center;">
+                <div class="card-image geopattern" data-pattern-id="{{ repo.name }}" data-thumb="{{ thumb }}" data-readme-api="https://api.github.com/repos/{{ repo_full_name }}/readme" data-raw-root="https://raw.githubusercontent.com/{{ repo_full_name }}/{{ repo_default_branch }}/" data-repo-updated-at="{{ repo.updated_at }}" style="background-size:cover;background-position:center;">
                     <div class="card-image-cell">
                         <h3 class="card-title">
                             {{ repo.name }}
