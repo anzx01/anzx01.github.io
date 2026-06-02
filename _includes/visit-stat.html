@@ -1,18 +1,59 @@
 <!-- 访问统计 -->
 {% if site.components.busuanzi.enabled == true and page.visit-stat != 'hidden' and page.layout != 'mindmap' %}
-<span class="visit-stat">
-  <span id="busuanzi_container_site_pv" class="visit-stat-item">
-    本站访问量 <span id="busuanzi_value_site_pv">--</span> 次
+<span class="visit-stat" aria-label="访问统计">
+  <span id="busuanzi_container_site_pv" class="visit-stat-item" style="display:none;">
+    本站访问量 <span id="busuanzi_value_site_pv">0</span> 次
   </span>
-  <span id="busuanzi_container_site_uv" class="visit-stat-item">
-    / 本站访客数 <span id="busuanzi_value_site_uv">--</span> 人
+  <span id="busuanzi_container_site_uv" class="visit-stat-item" style="display:none;">
+    / 本站访客数 <span id="busuanzi_value_site_uv">0</span> 人
   </span>
-  <span id="busuanzi_container_page_pv" class="visit-stat-item">
-    / 本页访问量 <span id="busuanzi_value_page_pv">--</span> 次
+  <span id="busuanzi_container_page_pv" class="visit-stat-item" style="display:none;">
+    / 本页访问量 <span id="busuanzi_value_page_pv">0</span> 次
   </span>
   {% if site.components.busuanzi.start_date %}
   <span>统计始于{{ site.components.busuanzi.start_date }}</span>
   {% endif %}
 </span>
-<script async src="{{ assets_base_url }}/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  (function () {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = '{{ assets_base_url }}/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.onload = function () {
+      var pollCount = 0;
+      var timer = window.setInterval(function () {
+        pollCount += 1;
+        var sitePv = document.getElementById('busuanzi_value_site_pv');
+        var siteUv = document.getElementById('busuanzi_value_site_uv');
+        var pagePv = document.getElementById('busuanzi_value_page_pv');
+        var ready = sitePv && siteUv && pagePv && sitePv.textContent !== '0' && sitePv.textContent !== '--';
+
+        if (ready || pollCount >= 20) {
+          window.clearInterval(timer);
+          var ids = [
+            'busuanzi_container_site_pv',
+            'busuanzi_container_site_uv',
+            'busuanzi_container_page_pv'
+          ];
+          ids.forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.style.display = '';
+          });
+        }
+      }, 200);
+    };
+    script.onerror = function () {
+      var ids = [
+        'busuanzi_container_site_pv',
+        'busuanzi_container_site_uv',
+        'busuanzi_container_page_pv'
+      ];
+      ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+    };
+    document.head.appendChild(script);
+  })();
+</script>
 {% endif %}
